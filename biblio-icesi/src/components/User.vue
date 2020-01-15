@@ -1,29 +1,22 @@
 <template>
-    <div class="book"> 
-        <li> 
-            {{ bookData.name }}
-            <span>{{ bookData.author }}</span>
-            <button v-on:click="onDeleteBook(bookData.id)">Delete</button>
+    <div>
+        <li class="user"> 
+            {{ userData.name }}
+            <span>{{ userData.apellido }}</span>
+            <button v-on:click="onDeleteUser(userData.id)">Delete</button>
         </li>
-
-        <router-link :to="'/book/' + bookData.id"> View Details </router-link>
-        <createLoan :bookId = bookData.id></createLoan>
     </div>
 </template>
 
 <script>
-import CreateLoan from './CreateLoan'
 
 export default {
-  name: 'book',
-  props: ['bookData', 'onDeleteBook'],
+  name: 'user',
+  props: ['userData', 'onDeleteUser'],
   data (){
       return {
           
       }
-  },
-  components: {
-      createLoan: CreateLoan
   },
   methods: {
       
@@ -32,7 +25,7 @@ export default {
 </script>
 
 <style>
-    .book{
+    .user{
         list-style-type: none;
         text-align: left;
         border: 1px solid #000;
@@ -41,11 +34,11 @@ export default {
         box-shadow: 1px 1px 1px 1px #ccc;
         background-color: #f3f3f3;
     }
-    .book:hover{
+    .user:hover{
         background-color: #d8d8d8;
         cursor: pointer; 
     }
-    .book span{
+    .user span{
         font-size: 10px;
         color: #4e4ca9;
     }

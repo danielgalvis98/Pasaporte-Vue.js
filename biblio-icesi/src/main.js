@@ -4,13 +4,19 @@ import App from './App.vue'
 import Biblio from './components/Biblio.vue'
 import Home from './components/Home.vue'
 import CreateBook from './components/CreateBook.vue'
+import Users from './components/Users.vue'
+import CreateUser from './components/CreateUser.vue'
+import BookDetails from './components/BookDetails.vue'
 
 Vue.use(VueRouter);
 
 const routes = [
   {path: '/', component: Home},
   {path: '/library', component: Biblio},
-  {path: '/create-book', component: CreateBook}
+  {path: '/create-book', component: CreateBook},
+  {path: '/users', component: Users},
+  {path: '/create-user', component: CreateUser},
+  {path: '/book/:bookId', component: BookDetails, params: true}
 ];
 
 const router = new VueRouter({

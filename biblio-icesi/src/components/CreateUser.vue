@@ -1,15 +1,15 @@
 <template>
-    <div id="create-book">
+    <div id="create-user">
         <br>
         <br>
-        <label>Name</label>
+        <label>First Name</label>
         <input v-model="name" />
         <br>
-        <label>Author</label>
-        <input v-model="author" />
+        <label>Last Name</label>
+        <input v-model="apellido" />
         <br>
         <br>
-        <button @click="saveBook">Guardar</button>
+        <button @click="saveUser">Guardar</button>
     </div>
 </template>
 
@@ -17,32 +17,32 @@
 import DB from '../DB.js';
 export default {
     
-    name: 'create-book',
+    name: 'create-user',
     data (){
         return {
             name: '',
-            author: ''
+            apellido: ''
         }
     },
     methods: {
-        saveBook (){
+        saveUser (){
             if (this.name === ''){
                 alert('Name is required');
                 return;
             }
-            if (this.author===''){
+            if (this.apellido===''){
                 alert('Author is required');
                 return;
             }
-            const book = {
+            const user = {
                 id: Math.random(),
                 name: this.name,
-                author: this.author
+                apellido: this.apellido
             }
-            DB.saveBook(book);
+            DB.saveUser(user);
             this.name = '';
-            this.author = '';
-            alert('Book Created Succesfully');
+            this.apellido = '';
+            alert('User Created Succesfully');
         }
     }
 }

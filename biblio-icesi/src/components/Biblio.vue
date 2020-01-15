@@ -9,6 +9,7 @@
 
 <script>
 import Book from './Book.vue';
+import DB from '../DB.js'
 
 export default {
 
@@ -18,14 +19,13 @@ export default {
   },
   data (){
       return {
-          books: JSON.parse(localStorage.getItem('books'))
+          books: DB.getBooks()
       }
   },
   methods: {
       deleteBook(bookId) {
-          alert(bookId);
-          this.books = this.books.filter(book => book.id !== bookId);
-          localStorage.setItem('books', JSON.stringify(this.books));
+          DB.deleteBook(bookId);
+          this.books = DB.getBooks();
       }
   }
 }
