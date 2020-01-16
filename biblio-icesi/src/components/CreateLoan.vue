@@ -34,7 +34,6 @@ export default {
                return;
            }
            const loan = {
-               id: Math.random(),
                userId: this.userId,
                bookId: this.bookId
            }

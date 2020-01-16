@@ -41,6 +41,11 @@ class DB{
         localStorage.setItem('users', JSON.stringify(users));
     }
 
+    getUser(userId){
+        const  users = this.getUsers();
+        return users.filter(user => user.id.toString() === userId.toString())[0];
+    }
+
     getLoans(){
         let loans = JSON.parse(localStorage.getItem('loans')); 
         return (loans === null) ? [] : loans;
@@ -50,6 +55,16 @@ class DB{
         const loans = this.getLoans();
         loans.push(loan);
         localStorage.setItem('loans', JSON.stringify(loans));
+    }
+
+    getLoansByUser(userId) {
+        const loans = this.getLoans();
+        return (loans === null) ? [] : loans.filter(loan => loan.userId === userId);
+    }
+
+    getLoan(userId, bookId){
+        const loans = this.getLoans();
+        return loans.filter(loan => loan.bookId === bookId && loan.userId === userId);
     }
 }
 

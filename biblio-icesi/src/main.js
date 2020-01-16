@@ -7,6 +7,7 @@ import CreateBook from './components/CreateBook.vue'
 import Users from './components/Users.vue'
 import CreateUser from './components/CreateUser.vue'
 import BookDetails from './components/BookDetails.vue'
+import LoanDetails from './components/LoanDetails.vue'
 
 Vue.use(VueRouter);
 
@@ -16,7 +17,8 @@ const routes = [
   {path: '/create-book', component: CreateBook},
   {path: '/users', component: Users},
   {path: '/create-user', component: CreateUser},
-  {path: '/book/:bookId', component: BookDetails, params: true}
+  {path: '/book/:bookId', component: BookDetails, params: true},
+  {path: '/loan/:bookId/:userId', component: LoanDetails, params: true}
 ];
 
 const router = new VueRouter({

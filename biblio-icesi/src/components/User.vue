@@ -4,18 +4,25 @@
             {{ userData.name }}
             <span>{{ userData.apellido }}</span>
             <button v-on:click="onDeleteUser(userData.id)">Delete</button>
+            <p> Total Loans: {{ loans.length }} </p>
+            <br>
+            <ul> Loans: 
+                <li :key="loan.id" v-for="loan in loans"> <router-link :to="'/loan/' + loan.bookId + '/' + loan.userId"> {{ loan.bookId }} </router-link> </li>
+                
+            </ul>
         </li>
     </div>
 </template>
 
 <script>
+import DB from '../DB.js'
 
 export default {
   name: 'user',
   props: ['userData', 'onDeleteUser'],
   data (){
       return {
-          
+        loans: DB.getLoansByUser(this.userData.id)
       }
   },
   methods: {
